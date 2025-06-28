@@ -1,0 +1,33 @@
+package Java_String_Assesment;
+public class String_Performance {
+    public static void main(String[] args) {
+        int iterations = 1000;
+
+        // String using +
+        long start1 = System.currentTimeMillis();
+        String str = "";
+        for (int i = 0; i < iterations; i++) {
+            str = str + "a"; // Creates a new object every time
+        }
+        long end1 = System.currentTimeMillis();
+        System.out.println("Time taken by String (+): " + (end1 - start1) + " ms");
+
+        // StringBuilder (not synchronized, faster)
+        long start2 = System.currentTimeMillis();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < iterations; i++) {
+            sb.append("a");
+        }
+        long end2 = System.currentTimeMillis();
+        System.out.println("Time taken by StringBuilder: " + (end2 - start2) + " ms");
+
+        // StringBuffer (synchronized, thread-safe)
+        long start3 = System.currentTimeMillis();
+        StringBuffer sbf = new StringBuffer();
+        for (int i = 0; i < iterations; i++) {
+            sbf.append("a");
+        }
+        long end3 = System.currentTimeMillis();
+        System.out.println("Time taken by StringBuffer: " + (end3 - start3) + " ms");
+    }
+}
